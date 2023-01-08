@@ -1,11 +1,11 @@
-## Getting started
+## Getting started in R
 ### 1 Overview
 
 ##### 1.1 What is deFit?
 
 defit uses numerical optimization to fit ordinary differential equations (ODE) to time series data to examine the dynamic relationships between variables or the characteristics of a dynamical system. It can now be used to estimate the parameters of ODEs up to second order.
 
-##### 1.2 First impression
+##### 1.2 First impression in R
 
 To get a first impression of how deFit works in simulation, consider the following example of a differential equational model. The figure below contains a graphical representation of the model that we want to fit.
 ```R
