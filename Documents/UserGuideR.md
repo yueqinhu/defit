@@ -80,10 +80,10 @@ Some important features are NOT available (yet) in
 *   Support for univariate second-order differential equational.
 
 ```math
-    \ddot{x} = x + \dot{x} 
+    \ddot{x} ~ x + \dot{x} 
 ```
 ```math
-    \ddot{x} = β_1*x + β_1 * \dot{x}
+    \ddot{x} = β_1 x + β_1 \dot{x} + e 
 ```
 
 *   Support for bivariate first-order differential equational
@@ -96,8 +96,8 @@ Some important features are NOT available (yet) in
 ```
 ```math
 \begin{cases}
-\dot{x} = β_1 * x +  β_2 * y,\\
-\dot{y} = β_3 * x + β_4 * y, 
+\dot{x} = β_1 x +  β_2 y + e,\\
+\dot{y} = β_3 x + β_4 y + e, 
 \end{cases}
 ```
 
@@ -149,7 +149,7 @@ y ~ x1 + x2 + x3 + x4
 In this formula, the tilde (“\~”) is the regression operator. On the left-hand side of the operator, we have the dependent variable (y), and on the right-hand side, we have the independent variables, separated by the “+” operator. In deFit, a typical model is simply a set (or system) of differential equational formulas. For example:
 
 $$
-\ddot{X} = X + \dot{X} \\
+\ddot{X} ~ X + \dot{X} \\
 $$
 ```
     X(2) ~ X + X(1)
@@ -214,13 +214,13 @@ There is data's columns contain 'myTime' and variable 'myX'. So, we can build a 
 4-2-1
 
 $$
-\ddot{X} = X + \dot{X} 
+\ddot{X} ~ X + \dot{X} 
 $$
 
 And the equation 4-2-1 is simply an expression. So, we add the coefficients of differential quational.
 4-2-2
 ```math
-\ddot{X} = β_1*X + β_1 * \dot{X}
+\ddot{X} = β_1 X + β_1 \dot{X} + e
 ```
 It's about a time of differential equational. So, we should tell the equational initial values(The values of t0). To reduce the learning cost, the initial values do not need to tell the program. The program will guess initial values from the first value of data.
 So, the model can define below:
@@ -337,7 +337,7 @@ See more [(Hu & Huang, 2018)](https://doi.org/10.1080/00273171.2018.1503941), [(
 ##### 4.4 Damped oscillator model [(Hu & Huang, 2018)](https://doi.org/10.1080/00273171.2018.1503941)
 (4-1)
 ```math
-\ddot{y} + 2ζω\dot{y} + ω^2y = 0    
+\ddot{y} + 2 ζ ω \dot{y} + ω^2 y = 0    
 ```
 The damped harmonic oscillator has been frequently used in previous research to model the process of self-regulation (e.g., Boker & Graham, 1998). Equation (4-1) expresses a damped harmonic oscillator, where $\ddot{y}$ stands for the second derivative, $\dot{y}$ stands for the first derivative, and $y$ stands for the current location. The parameter $ω$ is the oscillation frequency, and $ω$ is greater than zero in an oscillating system. The parameter $ζ$ is the damping ratio, and $ζ$ is greater than zero in a damping system. The damped oscillator model with $ω$ > 0 and $ζ$ > 0 describes a system that oscillates with the amplitude gradually decreasing to zero.
 ##### 4.5 The complete code to specify and fit this model is printed again below:
@@ -389,15 +389,15 @@ There is data is contained by 'myTime' and variables 'myX' and 'myY'. So, we can
 
 ```math
     \begin{cases}
-\dot{x} = x + y,\\
-\dot{y} = x + y, 
+\dot{x} ~ x + y,\\
+\dot{y} ~ x + y, 
 \end{cases}
 ```
 And the equation 5-2-1 is simply an expression. So, we add the coefficients of differential quational.
 ```math
 \begin{cases}
-\dot{x} = β_1 * x +  β_2 * y,\\
-\dot{y} = β_3 * x + β_4 * y, 
+\dot{x} = β_1 x +  β_2 y + e,\\
+\dot{y} = β_3 x + β_4 y + e, 
 \end{cases}
 ```
 So, the model can define below:
