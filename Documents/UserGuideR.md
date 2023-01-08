@@ -208,7 +208,7 @@ Here, time is the time since we study start. 'seq' is a sequence. 'myX' is the v
 ```R
 > plot(x=example1$myTime,y=example1$myX)
 ```
-![image](./img/myTimemyX.png)
+![image](../img/myTimemyX.png)
 ##### 4.2 Fitting differential equational models to the data
 There is data's columns contain 'myTime' and variable 'myX'. So, we can build a model by univariate second-order differential equational.
 4-2-1
@@ -282,7 +282,7 @@ The result
 ```
 The plot would print by itself.
 
-![example1](./img/example1.png)
+![example1](../img/example1.png)
 
 You can use the summary function to know all the result information.
 
@@ -382,7 +382,7 @@ plot2 = plot2 + annotate("text",x = max(example2$myX)/2, y = max(c(example2$myX,
 plot2 = plot2 + annotate("text",x = max(example2$myX)/2, y = max(c(example2$myX,example2$myY))*0.92, color=3, label = paste('myY',':point'))
 plot2
 ```
-![image](./img/myTimemyXmyY.png)
+![image](../img/myTimemyXmyY.png)
 ##### 5.2 Fitting differential equational models to the data
 There is data is contained by 'myTime' and variables 'myX' and 'myY'. So, we can build a model by bivariate first-order differential equational.
 5-2-1
