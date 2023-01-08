@@ -455,7 +455,7 @@ The result
 ```
 The plot would print by itself.<br/>
 
-![image](./img/example2.png)
+![image](../img/example2.png)
 <br/>
 You can use the summary function to know all the result information.
 ```R
