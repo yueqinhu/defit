@@ -149,7 +149,7 @@ y ~ x1 + x2 + x3 + x4
 In this formula, the tilde (“\~”) is the regression operator. On the left-hand side of the operator, we have the dependent variable (y), and on the right-hand side, we have the independent variables, separated by the “+” operator. In deFit, a typical model is simply a set (or system) of differential equational formulas. For example:
 
 $$
-\ddot{X} ~ X + \dot{X} \\
+\ddot{X} \sim X + \dot{X} \\
 $$
 ```
     X(2) ~ X + X(1)
@@ -214,7 +214,7 @@ There is data's columns contain 'myTime' and variable 'myX'. So, we can build a 
 4-2-1
 
 $$
-\ddot{X} ~ X + \dot{X} 
+\ddot{X} \sim X + \dot{X} 
 $$
 
 And the equation 4-2-1 is simply an expression. So, we add the coefficients of differential quational.
@@ -389,8 +389,8 @@ There is data is contained by 'myTime' and variables 'myX' and 'myY'. So, we can
 
 ```math
     \begin{cases}
-\dot{x} ~ x + y,\\
-\dot{y} ~ x + y, 
+\dot{x} \sim x + y,\\
+\dot{y} \sim x + y, 
 \end{cases}
 ```
 And the equation 5-2-1 is simply an expression. So, we add the coefficients of differential quational.
