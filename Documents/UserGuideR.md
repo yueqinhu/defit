@@ -90,8 +90,8 @@ Some important features are NOT available (yet) in
 
 ```math
     \begin{cases}
-\dot{x} = x + y,\\
-\dot{y} = x + y, 
+\dot{x} \sim x + y,\\
+\dot{y} \sim x + y, 
 \end{cases}
 ```
 ```math
