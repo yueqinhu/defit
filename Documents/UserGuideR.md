@@ -80,7 +80,7 @@ Some important features are NOT available (yet) in
 *   Support for univariate second-order differential equational.
 
 ```math
-    \ddot{x} \~ x + \dot{x} 
+    \ddot{x} \(\sim \) x + \dot{x} 
 ```
 ```math
     \ddot{x} = β_1 x + β_1 \dot{x} + e 
