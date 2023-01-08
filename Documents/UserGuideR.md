@@ -483,10 +483,8 @@ For the detials of the result, you can use  to print it.
 5    init01  0.91094431 0.063023462
 6    init02  0.92694884 0.029064587
 ```
-##### 5.3 Report
 
-
-##### 5.4 The complete code to specify and fit this model is printed again below:
+##### 5.3 The complete code to specify and fit this model is printed again below:
 
 ```R
 library(deFit)
@@ -506,15 +504,5 @@ model2 <- '
 result2 <- defit(data = example2, model = model2)
 ```
 
-### references
 
-  Butner, Jonathan E. et al. “A Dynamical Systems Approach to Examining the Efficacy of Suicide‐focused Interventions.” Suicide & life-threatening behavior 51.1 (2021): 97–114. Web.
-
-
-Hairer, E. (Ernst), Christian Lubich, and Michel Roche. The Numerical Solution of Differential-Algebraic Systems by Runge-Kutta Methods. 1st ed. 1989. Berlin, Germany: Springer-Verlag, 1989. Web.
-
-Hu, & Huang, Y. (2018). Dynamic Regulation Responding to an External Stimulus: A Differential Equation Model. Multivariate Behavioral Research, 53(6), 925–939. <https://doi.org/10.1080/00273171.2018.1503941>
-
-
-  Zhang, Xutong et al. “A Dynamic Systems Account of Parental Self‐regulation Processes in the Context of Challenging Child Behavior.” Child development 93.5 (2022): e501–e514. Web.
 
