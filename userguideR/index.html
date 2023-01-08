@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://github.com/yueqinhu/defit/userguideR/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Usage Guide in R - deFit</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">deFit</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Usage Guide in R</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../userguidePython/" class="nav-link">Usage Guide in Python</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../news/" class="nav-link">news</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../userguidePython/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#defit" class="nav-link">deFit</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#getting-started" class="nav-link">Getting started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#documentation" class="nav-link">Documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="defit">deFit</h1>
+<p><a href="https://pypi.org/project/defit"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/defit.svg" /></a>
+<a href="https://pypi.org/project/defit"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/defit.svg" /></a></p>
+<hr />
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="##Getting started">Getting started</a></li>
+<li><a href="##Documentation">Documentation</a></li>
+</ul>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="1-overview">1 Overview</h3>
+<h5 id="11-what-is-defit">1.1 What is deFit?</h5>
+<p>defit uses numerical optimization to fit ordinary differential equations (ODE) to time series data to examine the dynamic relationships between variables or the characteristics of a dynamical system. It can now be used to estimate the parameters of ODEs up to second order.</p>
+<h5 id="12-first-impression">1.2 First impression</h5>
+<p>To get a first impression of how deFit works in simulation, consider the following example of a differential equational model. The figure below contains a graphical representation of the model that we want to fit.</p>
+<pre><code class="language-R">data('example1')
+model1 &lt;- '
+X =~ myX
+time =~ myTime
+X(2) ~ X(1) + X
+'
+result1 &lt;- defit(data = example1, model = model1)
+</code></pre>
+<p><img alt="example1" src="../img/example1.png" /></p>
+<h3 id="2-getting-started">2 Getting started</h3>
+<h5 id="21-install-r">2.1 Install R</h5>
+<p>deFit is implemented as an R package. This means that before installing deFit, you should have installed a recent version(&gt;=4.0.0) of R. You can download the latest version of R from the <a href="https://www.r-project.org/">R-project website</a>.</p>
+<h5 id="22-install-defit">2.2 Install deFit</h5>
+<p>Once you have installed R.you can install the deFit package simply by starting up R, and typing</p>
+<pre><code class="language-R">install.packages(&quot;deFit&quot;, dependencies = TRUE)
+</code></pre>
+<h5 id="23-getting-started">2.3 Getting Started</h5>
+<p>Now that you have installed deFit, you can read the tutorial.</p>
+<h3 id="3-second-impression">3 Second impression</h3>
+<pre><code class="language-R">library(deFit)
+data('example2')
+model2 &lt;- '
+    # define variable
+    X =~ myX
+    Y =~ myY
+
+    # define time
+    time =~ myTime
+
+    # define differential equation
+    X(1) ~ X + Y
+    Y(1) ~ Y + X
+'
+result2 &lt;- defit(data = example2, model = model2)
+</code></pre>
+<p><img alt="image" src="../img/example2.png" /></p>
+<hr />
+<h2 id="documentation">Documentation</h2>
+<h3 id="1-tutorial">1 Tutorial</h3>
+<h5 id="11-overview">1.1 Overview</h5>
+<p>Read this, we hope to give you just enough information to get you started (but no more).
+Contents:</p>
+<ul>
+<li>Before you start</li>
+<li>Installation</li>
+<li>Model syntax</li>
+<li>A first example: Univariate first-order differential equational</li>
+<li>A second example: Bivariate second-order differential equational</li>
+</ul>
+<h5 id="22-before-you-start">2.2 Before you start</h5>
+<p>First of all, you must have a recent version (4.0.0 or higher) of R installed. You can download the latest version of R from this page: <a href="http://cran.r-project.org/">http://cran.r-project.org/</a>.
+Some important features are NOT available (yet) in</p>
+<ul>
+<li>Support for univariate second-order differential equational.</li>
+</ul>
+<pre><code class="language-math">    \ddot{x} = x + \dot{x} 
+</code></pre>
+<pre><code class="language-math">    \ddot{x} = β_1*x + β_1 * \dot{x}
+</code></pre>
+<ul>
+<li>Support for bivariate first-order differential equational</li>
+</ul>
+<pre><code class="language-math">    \begin{cases}
+\dot{x} = x + y,\\
+\dot{y} = x + y, 
+\end{cases}
+</code></pre>
+<pre><code class="language-math">\begin{cases}
+\dot{x} = β_1 * x +  β_2 * y,\\
+\dot{y} = β_3 * x + β_4 * y, 
+\end{cases}
+</code></pre>
+<p>The more information you can read the example. We will add more model of differential equational models. hold on...</p>
+<h3 id="2-installation">2 Installation</h3>
+<p>Once you have installed R.you can install the <strong>deFit</strong> package simply by starting up R, and typing</p>
+<pre><code class="language-R">install.packages(&quot;deFit&quot;, dependencies = TRUE)
+</code></pre>
+<p>You can check if the installation was succesful by typing</p>
+<pre><code class="language-R">library(deFit)
+</code></pre>
+<p>You are ready to start.</p>
+<h3 id="3-model-syntax">3 Model syntax</h3>
+<p>At the heart of the deFit package is the 'model syntax'.The model syntax is a description of the model to be estimated. In this section, we briefly explain the elements of the deFit model syntax. More details are given in the examples that follow.
+To reduce learning costs, the model syntax is similar to regression and <a href="https://lavaan.ugent.be/tutorial/cfa.html">lavaan</a> in R.</p>
+<h5 id="31-operator-variable-definitions">3.1 operator '=\~' variable definitions</h5>
+<p>Because our differential equational formulas have variable, we must 'define' them by listing their indicators. We do this by using the special operator "=\~", which can be read as is measured by. For example, to define the two variabels X and Y, we can use something like:</p>
+<pre><code class="language-R">X =~ myX
+Y =~ myY
+</code></pre>
+<p><code>myX</code> and <code>myY</code> are columns' names of your data.</p>
+<h5 id="32-operator-must-contain-time-on-the-left">3.2 operator '=\~' must contain 'time' on the left.</h5>
+<p>Especially, this package is that analysis the intensive longitudinal data. So, you must define a 'time' variable. And the variable 'time' can not change (the left of the operator '=\~', which 'time' can not be changed).</p>
+<pre><code>time =~ time
+</code></pre>
+<p>You can use the 'time' column's name of your data to repalce the 'time' on the right of the operator '=\~'.</p>
+<pre><code>time =~ myTime
+</code></pre>
+<h5 id="33-operator-formula-definitions">3.3 operator '\~' formula definitions</h5>
+<p>In the R environment, a regression formula has the following form:</p>
+<pre><code>y ~ x1 + x2 + x3 + x4
+</code></pre>
+<p>In this formula, the tilde (“\~”) is the regression operator. On the left-hand side of the operator, we have the dependent variable (y), and on the right-hand side, we have the independent variables, separated by the “+” operator. In deFit, a typical model is simply a set (or system) of differential equational formulas. For example:</p>
+<p>$$
+\ddot{X} = X + \dot{X} \
+$$</p>
+<pre><code>    X(2) ~ X + X(1)
+</code></pre>
+<p>$\dot{X}$ is <code>X(1)</code>: The meaning is the x's first-order derivative.</p>
+<p>$\ddot{X}$ is <code>X(2)</code>: The meaning is the x's second-order derivative.</p>
+<h5 id="34-summarize-the-model-dyntax">3.4 summarize the model dyntax</h5>
+<p>Using these formula types, a large variety of differential models can be descirbed. The current set of formula types is summarized in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>formula type</th>
+<th>operator</th>
+<th>mnemonic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>variable definition</td>
+<td>=\~</td>
+<td>is measured by</td>
+</tr>
+<tr>
+<td>differential equational</td>
+<td>\~</td>
+<td>is DE on</td>
+</tr>
+<tr>
+<td>derivative</td>
+<td>()</td>
+<td>Nth-order</td>
+</tr>
+</tbody>
+</table>
+<p><code>time =~ myTime</code> must be contianed.</p>
+<p>A complete deFit model syntax si simply a combination of these formula types, enclosed between single quotes. For example:</p>
+<pre><code class="language-R">model2 &lt;- '
+    # define variable
+    X =~ myX
+    Y =~ myY
+
+    # define time
+    time =~ myTime
+
+    # define differential equation
+    X(1) ~ X + Y
+    Y(1) ~ Y + X
+  '
+</code></pre>
+<p>When fitting the model, you may tell the 'defit' function data and model as follows:</p>
+<pre><code class="language-R">result &lt;- defit(data = example2, model = model2)
+</code></pre>
+<h3 id="4-a-first-example-univariate-first-order-differential-equational">4 A first example: Univariate first-order differential equational</h3>
+<p>The damped oscillator model helps describe the regulatory process. We can use an example to explore that.</p>
+<h5 id="41-the-example1-data">4.1 The example1 data</h5>
+<p>The example1 file reports data from a simulation of a second-order differential equational.Signal to noise ratio (SNR) is 2:1 and the sample size is n=100. Then we try to use differential equational to describe the data.</p>
+<pre><code class="language-R">&gt; library(deFit)
+&gt; data(&quot;example1&quot;)
+&gt; str(example1)
+'data.frame':   100 obs. of  3 variables:
+ $ seq   : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ myTime: int  0 1 2 3 4 5 6 7 8 9 ...
+ $ myX   : num  9.97 9 11.2 5.54 7.81 ...
+</code></pre>
+<p>Here, time is the time since we study start. 'seq' is a sequence. 'myX' is the variable that we care about. Let us plot the data.</p>
+<pre><code class="language-R">&gt; plot(x=example1$myTime,y=example1$myX)
+</code></pre>
+<p><img alt="image" src="../img/myTimemyX.png" /></p>
+<h5 id="42-fitting-differential-equational-models-to-the-data">4.2 Fitting differential equational models to the data</h5>
+<p>There is data's columns contain 'myTime' and variable 'myX'. So, we can build a model by univariate second-order differential equational.
+4-2-1</p>
+<p>$$
+\ddot{X} = X + \dot{X} 
+$$</p>
+<p>And the equation 4-2-1 is simply an expression. So, we add the coefficients of differential quational.
+4-2-2</p>
+<pre><code class="language-math">\ddot{X} = β_1*X + β_1 * \dot{X}
+</code></pre>
+<p>It's about a time of differential equational. So, we should tell the equational initial values(The values of t0). To reduce the learning cost, the initial values do not need to tell the program. The program will guess initial values from the first value of data.
+So, the model can define below:</p>
+<pre><code class="language-R">model1 &lt;- '
+  # define variable
+  X =~ myX
+
+  # define time
+  time =~ myTime
+
+  # define differential equation
+  X(2) ~ X(1) + X
+  '
+</code></pre>
+<p>where
+<code>X</code> is the X's 0-order derivative(X stands for the current location).
+$\dot{X}$ is the X's first-order derivative.
+$\ddot{X}$ is the X's second-order derivative.
+$β_1$ is the coefficient of X's first-order derivative.
+$β_2$ is the coefficient of X's second-order derivative.
+The different coefficients ( $β_1$ , $β_2$ ) and initial values have different trends with time.</p>
+<blockquote>
+<p>More about initial values problem you can read <a href="https://link.springer.com/book/10.1007/BFb0093947">The Numerical Solution of Differential-Algebraic Systems by Runge-Kutta Methods</a>
+Or, Damped oscillator model<a href="https://doi.org/10.1080/00273171.2018.1503941">(Hu &amp; Huang, 2018)</a></p>
+</blockquote>
+<p>Then, use the defit function to fit the model.</p>
+<pre><code class="language-R">result1 &lt;- defit(data = example1, model = model1)
+</code></pre>
+<p>The result</p>
+<pre><code class="language-R">[1] &quot;-------The Model-------\n&quot;
+    field operator  variable
+2       X       =~       myX
+5    time       =~    myTime
+8   X(2)         ~  X(1) + X
+[1] &quot;-------Your Data(head 3)-------\n&quot;
+  seq myTime       myX
+1   1      0  9.967876
+2   2      1  8.998657
+3   3      2 11.196752
+[1] &quot;Univariate second-order differential equational&quot;
+[1] &quot;------Begin to calcuate the parameters -------&quot;
+[1] &quot;Program will fit the data with univariate second-Order differential equational.&quot;
+[1] &quot;The differential equational presents as:&quot;
+[1] &quot;x(2) = β1 * x + β2 * x(1)&quot;
+[1] &quot;Program is using the  L-BFGS-B method&quot;
+[1] &quot;The program's initial guess values are&quot;
+[1] &quot;β1: 0 ,β2: 0 ,t01: 9.967875535 ,t02: 0 ,t03: 0 ,t04: 0&quot;
+   variable        values           SE
+1 X(0)→X(2) -4.745853e-02 1.590180e-03
+2 X(1)→X(2) -4.973902e-02 3.426331e-04
+3    init01  9.940378e+00 2.092934e-01
+4    init02 -9.385650e-02 4.881139e-02
+5    init03 -3.937747e-10 2.982646e+02
+6    init04  0.000000e+00 6.813985e-02
+[1] &quot;successful:successful completion:(which is always the case for SANN and Brent)&quot;
+</code></pre>
+<p>The plot would print by itself.</p>
+<p><img alt="example1" src="../img/example1.png" /></p>
+<p>You can use the summary function to know all the result information.</p>
+<pre><code class="language-R">&gt; summary(result1)
+            Length Class      Mode     
+userdata     3     data.frame list     
+parameter    6     -none-     list     
+predict      2     data.frame list     
+r_squared    1     -none-     character
+RMSE         1     -none-     numeric  
+SE          36     -none-     numeric  
+equation     2     -none-     character
+table        3     data.frame list     
+convergence  1     -none-     character
+</code></pre>
+<blockquote>
+<p><strong>object</strong>: directly type the defit object will print all results. The function summary is used to print the summary of all results, and the exact values of each result can be extracted by the "$" operator.</p>
+<p><strong>userdata</strong>：the data that contains a sequence 'seq' starting from 1, the original time variable 'time', and all other variables user defined.</p>
+<p><strong>parameter</strong>: the best set of parameters found, including parameter values, gradient, convergence, message and hessian matrix.</p>
+<p><strong>predict</strong>: a dataframe of model predicted variable states at each time point.</p>
+<p><strong>r_squared</strong>: r_squared is the square of the correlation between the observed values and the predicted values, representing the proportion of variance explained by the model.</p>
+<p><strong>RMSE</strong>: RMSE (Root Mean Squared Error) is the standard deviation of the residuals.</p>
+<p><strong>SE</strong>: a symmetric matrix giving standard error of the model parameters.</p>
+<p><strong>equation</strong>: a string prints the estimated differential equations and initial states.</p>
+<p><strong>table</strong>: a summary table of parameter estimates and their corresponding SEs.</p>
+<p><strong>convergence</strong>: a message returns the result of the optimization convergence check.</p>
+</blockquote>
+<p>For the detials of the result, you can use <code>$</code> to print it.</p>
+<pre><code class="language-R">&gt; result1$table
+   variable        values           SE
+1 X(0)→X(2) -4.745853e-02 1.590180e-03
+2 X(1)→X(2) -4.973902e-02 3.426331e-04
+3    init01  9.940378e+00 2.092934e-01
+4    init02 -9.385650e-02 4.881139e-02
+5    init03 -3.937747e-10 2.982646e+02
+6    init04  0.000000e+00 6.813985e-02
+</code></pre>
+<h5 id="43-report">4.3 Report</h5>
+<p>See more <a href="https://doi.org/10.1080/00273171.2018.1503941">(Hu &amp; Huang, 2018)</a>, <a href="https://doi.org/10.1111/cdev.13808">(Zhang et al., 2022)</a>,
+ <a href="https://doi.org/10.1111/sltb.12675">(Butner et al., 2021)</a></p>
+<h5 id="44-damped-oscillator-model-hu-huang-2018">4.4 Damped oscillator model <a href="https://doi.org/10.1080/00273171.2018.1503941">(Hu &amp; Huang, 2018)</a></h5>
+<p>(4-1)</p>
+<pre><code class="language-math">\ddot{y} + 2ζω\dot{y} + ω^2y = 0    
+</code></pre>
+<p>The damped harmonic oscillator has been frequently used in previous research to model the process of self-regulation (e.g., Boker &amp; Graham, 1998). Equation (4-1) expresses a damped harmonic oscillator, where $\ddot{y}$ stands for the second derivative, $\dot{y}$ stands for the first derivative, and $y$ stands for the current location. The parameter $ω$ is the oscillation frequency, and $ω$ is greater than zero in an oscillating system. The parameter $ζ$ is the damping ratio, and $ζ$ is greater than zero in a damping system. The damped oscillator model with $ω$ &gt; 0 and $ζ$ &gt; 0 describes a system that oscillates with the amplitude gradually decreasing to zero.</p>
+<h5 id="45-the-complete-code-to-specify-and-fit-this-model-is-printed-again-below">4.5 The complete code to specify and fit this model is printed again below:</h5>
+<pre><code class="language-R">library(deFit)
+data('example1')
+model1 &lt;- '
+    X =~ myX
+    time =~ myTime
+    X(2) ~ X(1) + X
+    '
+result1 &lt;- defit(data = example1, model = model1)
+</code></pre>
+<h3 id="5-a-second-example-bivariate-second-order-differential-equational">5 A second example: Bivariate second-order differential equational</h3>
+<p>The Bivariate second-order differential equational model helps describe the relationship between two variables.</p>
+<p>The two variables have a relationship and how to describe it with time. And maybe it changes with promoting by each other. They will increase together. Maybe the two variables all are a negative relationship and they will decrease together. On the other hand, if one variable is a negative impact and the other is a positive impact, the relationship maybe become an oscillating relationship.</p>
+<h5 id="51-the-example2-data">5.1 The example2 data</h5>
+<p>There are two variables in the example2 data and a time serises.</p>
+<pre><code class="language-R">&gt; library(deFit)
+&gt; data(&quot;example2&quot;)
+&gt; str(example2)
+'data.frame':   101 obs. of  4 variables:
+ $ T     : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ myTime: num  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 ...
+ $ myX   : num  0.754 1.007 1.116 1.179 0.945 ...
+ $ myY   : num  1.03 1.01 1.03 1.02 1 ...
+</code></pre>
+<p>And plot the data.</p>
+<pre><code class="language-R">library(ggplot2)
+plot2 = ggplot(example2,aes(x=myTime))
+plot2 = plot2 + geom_point(y=example2$myX,color=2)
+plot2 = plot2 + geom_point(y=example2$myY,color=3)
+plot2 = plot2 + coord_cartesian(ylim = c(min(c(example2$myX,example2$myY)),max(c(example2$myX,example2$myY))))
+plot2 = plot2 + annotate(&quot;text&quot;,x = max(example2$myX)/2, y = max(c(example2$myX,example2$myY))*0.9, color=2, label = paste('myX',':point'))
+plot2 = plot2 + annotate(&quot;text&quot;,x = max(example2$myX)/2, y = max(c(example2$myX,example2$myY))*0.92, color=3, label = paste('myY',':point'))
+plot2
+</code></pre>
+<p><img alt="image" src="../img/myTimemyXmyY.png" /></p>
+<h5 id="52-fitting-differential-equational-models-to-the-data">5.2 Fitting differential equational models to the data</h5>
+<p>There is data is contained by 'myTime' and variables 'myX' and 'myY'. So, we can build a model by bivariate first-order differential equational.
+5-2-1</p>
+<pre><code class="language-math">    \begin{cases}
+\dot{x} = x + y,\\
+\dot{y} = x + y, 
+\end{cases}
+</code></pre>
+<p>And the equation 5-2-1 is simply an expression. So, we add the coefficients of differential quational.</p>
+<pre><code class="language-math">\begin{cases}
+\dot{x} = β_1 * x +  β_2 * y,\\
+\dot{y} = β_3 * x + β_4 * y, 
+\end{cases}
+</code></pre>
+<p>So, the model can define below:</p>
+<pre><code class="language-R">model2 &lt;- '
+    # define variable
+    X =~ myX
+    Y =~ myY
+
+    # define time
+    time =~ myTime
+
+    # define differential equation
+    X(1) ~ X + Y
+    Y(1) ~ Y + X
+  '
+</code></pre>
+<p>Then, use the defit function to fit the model.</p>
+<pre><code class="language-R">result2 &lt;- defit(data = example2, model = model2)
+</code></pre>
+<p>The result</p>
+<pre><code class="language-R">[1] &quot;-------The Model-------\n&quot;
+       field operator variable
+2          X       =~      myX
+3          Y       =~      myY
+6       time       =~   myTime
+9      X(1)         ~    X + Y
+10     Y(1)         ~    Y + X
+[1] &quot;-------Your Data(head 3)-------\n&quot;
+  T myTime      myX      myY
+1 1    0.1 0.753794 1.028922
+2 2    0.2 1.007378 1.010037
+3 3    0.3 1.115716 1.026445
+[1] &quot;Bivariate first-order differential equational&quot;
+[1] &quot;------Begin to calcuate the parameters -------&quot;
+[1] &quot;Program will fit the data with bivariate first-Order differential equational.&quot;
+[1] &quot;The differential equational presents as:&quot;
+[1] &quot;dx/dt = β1 * x + β2 * y&quot;
+[1] &quot;dy/dt = β3 * x + β4 * y&quot;
+[1] &quot;Program is using the  Nelder-Mead method&quot;
+[1] &quot;The program's initial guess values are&quot;
+[1] &quot;β1: 0 ,β2: 0 ,β3: 0 ,β4: 0 ,x0: 0.753794 ,y0: 1.028922&quot;
+   variable      values          SE
+1 X(0)→X(1) -0.04444872 0.010483338
+2 Y(0)→X(1)  0.16572484 0.013342100
+3 X(0)→Y(1) -0.10984111 0.004990422
+4 Y(0)→Y(1)  0.16282472 0.006199609
+5    init01  0.91094431 0.063023462
+6    init02  0.92694884 0.029064587
+[1] &quot;successful:indicates that the iteration limit maxit had been reached.&quot;
+</code></pre>
+<p>The plot would print by itself.<br/></p>
+<p><img alt="image" src="../img/example2.png" />
+<br/>
+You can use the summary function to know all the result information.</p>
+<pre><code class="language-R">&gt; summary(result2)
+            Length Class      Mode     
+userdata     4     data.frame list     
+parameter    6     -none-     list     
+predict      3     data.frame list     
+r_squared    2     -none-     character
+RMSE         2     -none-     numeric  
+SE          36     -none-     numeric  
+equation     4     -none-     character
+table        3     data.frame list     
+convergence  1     -none-     character
+</code></pre>
+<p>For the detials of the result, you can use  to print it.</p>
+<pre><code class="language-R">&gt; result2$table
+   variable      values          SE
+1 X(0)→X(1) -0.04444872 0.010483338
+2 Y(0)→X(1)  0.16572484 0.013342100
+3 X(0)→Y(1) -0.10984111 0.004990422
+4 Y(0)→Y(1)  0.16282472 0.006199609
+5    init01  0.91094431 0.063023462
+6    init02  0.92694884 0.029064587
+</code></pre>
+<h5 id="53-report">5.3 Report</h5>
+<h5 id="54-the-complete-code-to-specify-and-fit-this-model-is-printed-again-below">5.4 The complete code to specify and fit this model is printed again below:</h5>
+<pre><code class="language-R">library(deFit)
+data('example2')
+model2 &lt;- '
+    # define variable
+    X =~ myX
+    Y =~ myY
+
+    # define time
+    time =~ myTime
+
+    # define differential equation
+    X(1) ~ X + Y
+    Y(1) ~ Y + X
+  '
+result2 &lt;- defit(data = example2, model = model2)
+</code></pre>
+<h3 id="references">references</h3>
+<p>Butner, Jonathan E. et al. “A Dynamical Systems Approach to Examining the Efficacy of Suicide‐focused Interventions.” Suicide &amp; life-threatening behavior 51.1 (2021): 97–114. Web.</p>
+<p>Hairer, E. (Ernst), Christian Lubich, and Michel Roche. The Numerical Solution of Differential-Algebraic Systems by Runge-Kutta Methods. 1st ed. 1989. Berlin, Germany: Springer-Verlag, 1989. Web.</p>
+<p>Hu, &amp; Huang, Y. (2018). Dynamic Regulation Responding to an External Stimulus: A Differential Equation Model. Multivariate Behavioral Research, 53(6), 925–939. <a href="https://doi.org/10.1080/00273171.2018.1503941">https://doi.org/10.1080/00273171.2018.1503941</a></p>
+<p>Zhang, Xutong et al. “A Dynamic Systems Account of Parental Self‐regulation Processes in the Context of Challenging Child Behavior.” Child development 93.5 (2022): e501–e514. Web.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
